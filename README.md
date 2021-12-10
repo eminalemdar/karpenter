@@ -1,2 +1,2 @@
-# karpenter
-This repository consists example codes for Karpenter
+# Karpenter
+This repository consists example codes for Karpenter Cluster Autoscaler.

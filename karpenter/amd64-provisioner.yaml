@@ -1,0 +1,23 @@
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
+metadata:
+  name: amd64
+spec:
+  requirements:
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values: ["on-demand"]
+    - key: "topology.kubernetes.io/zone" 
+      operator: In
+      values: ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
+    - key: "kubernetes.io/arch" 
+      operator: In
+      values: ["amd64"]
+  limits:
+    resources:
+      cpu: 1000
+  provider:
+    instanceProfile: KarpenterNodeInstanceProfile-karpenter-cluster
+    securityGroupSelector:
+      kubernetes.io/cluster/karpenter-cluster: '*'
+  ttlSecondsAfterEmpty: 30

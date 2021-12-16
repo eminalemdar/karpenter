@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inflate-arm64
+spec:
+  replicas: 0 #You can scale up the deployment
+  selector:
+    matchLabels:
+      app: inflate-arm64
+  template:
+    metadata:
+      labels:
+        app: inflate-arm64
+    spec:
+      terminationGracePeriodSeconds: 0
+      containers:
+        - name: inflate-arm64
+          image: public.ecr.aws/eks-distro/kubernetes/pause:3.2
+          resources:
+            requests:
+              cpu: 1
+              memory: 256M
+      nodeSelector:
+        kubernetes.io/arch: arm64

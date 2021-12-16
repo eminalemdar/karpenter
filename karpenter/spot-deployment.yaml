@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spot
+spec:
+  replicas: 0 #You can scale up the deployment
+  selector:
+    matchLabels:
+      app: inflate-spot
+  template:
+    metadata:
+      labels:
+        app: inflate-spot
+    spec:
+      terminationGracePeriodSeconds: 0
+      containers:
+        - name: inflate-spot
+          image: public.ecr.aws/eks-distro/kubernetes/pause:3.2
+          resources:
+            requests:
+              cpu: 1
+              memory: 256M
+      nodeSelector:
+        kubernetes.io/arch: amd64
+        karpenter.sh/capacity-type: spot

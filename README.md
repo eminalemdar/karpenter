@@ -20,9 +20,6 @@ This repository consists example codes for **Karpenter Cluster Autoscaler**.
     ├── outputs.tf
     ├── provider.tf
     ├── sg.tf
-    ├── terraform.tfstate
-    ├── terraform.tfstate.1639490246.backup
-    ├── terraform.tfstate.backup
     ├── vars.tf
     └── vpc.tf
 ```

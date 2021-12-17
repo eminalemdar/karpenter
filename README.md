@@ -1,6 +1,8 @@
 # Karpenter
 This repository consists example codes for **Karpenter Cluster Autoscaler**. 
 
+![](https://github.com/aws/karpenter/blob/main/website/static/full_logo.png)
+
 **Karpenter** is an Open Source Cluster Autoscaler tool developed and published by **AWS**.
 
 ## Folder Structure

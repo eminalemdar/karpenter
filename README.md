@@ -42,9 +42,10 @@ terraform plan
 ```bash
 terraform apply
 ```
-- You should update the `config_path` parameter in the [Provider Configuration](https://github.com/eminalemdar/karpenter/tree/master/terraform-eks/provider.tf) file for Helm provider's connection to the EKS cluster.
+- You must update the `config_path` parameter in the [Provider Configuration](https://github.com/eminalemdar/karpenter/tree/master/terraform-eks/provider.tf) file for Helm provider's connection to the EKS cluster.
 - Then you need to create the Provisioners and Deployments.
 - Finally you can scale the deployments using ``kubectl scale deployment <deployment-name> --replicas=10``
+- You can set the log level of the Karpenter to **DEBUG** to see more information using ``kubectl patch configmap config-logging -n karpenter --patch '{"data":{"loglevel.controller":"debug"}}``
 - You can see the logs of the Karpenter Controller using ``kubectl logs -f -n karpenter $(kubectl get pods -n karpenter -l karpenter=controller -o name)``
 
 ## Cleanup
